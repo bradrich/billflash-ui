@@ -1,0 +1,38 @@
+/* =================================================================================================
+Theming
+================================================================================================= */
+
+// Themes an element's borders.
+@mixin bf-border-theming() {
+  @each $color, $value in $theme-colors {
+    &.bf-#{$color}-border,
+    &.bf-#{$color}-lighter-border,
+    &.bf-#{$color}-darker-border {
+      border-width: 1px;
+      border-style: solid;
+      border-color: theme-color($color);
+    }
+    &.bf-#{$color}-lighter-border {
+      border-color: theme-color-level($color, -3);
+    }
+    &.bf-#{$color}-darker-border {
+      border-color: theme-color-level($color, 3);
+    }
+
+    @each $direction in $bf-border-directions {
+      &.bf-#{$color}-border-#{$direction},
+      &.bf-#{$color}-lighter-border-#{$direction},
+      &.bf-#{$color}-darker-border-#{$direction} {
+        border-#{$direction}-width: 5px;
+        border-#{$direction}-style: solid;
+        border-#{$direction}-color: theme-color($color);
+      }
+      &.bf-#{$color}-lighter-border-#{$direction} {
+        border-#{$direction}-color: theme-color-level($color, -3);
+      }
+      &.bf-#{$color}-darker-border-#{$direction} {
+        border-#{$direction}-color: theme-color-level($color, 3);
+      }
+    }
+  }
+}

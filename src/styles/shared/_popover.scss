@@ -1,0 +1,46 @@
+/* =================================================================================================
+Popover
+================================================================================================= */
+
+.popover-header {
+  color: $dark;
+}
+
+.bf-popover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1060;
+  max-width: 276px;
+  border: 1px solid $gray-200;
+
+  & > .bf-arrow {
+    position: absolute;
+    top: -11px;
+    right: 22px;
+    display: block;
+    margin-left: -11px;
+    width: 0;
+    height: 0;
+    border: 11px solid transparent;
+    border-top-width: 0;
+    border-bottom-color: $gray-200;
+  }
+
+  .bf-popover-title {
+    padding: ($spacer / 2) $spacer;
+    border-bottom: 1px solid $gray-300;
+    background-color: $gray-200;
+  }
+
+  .bf-popover-content {
+    display: block;
+    padding: $spacer $spacer ($spacer / 2);
+  }
+
+  .bf-popover-actions {
+    padding: ($spacer / 2) $spacer;
+    border-top: 1px solid $gray-200;
+    background-color: #ffffff;
+  }
+}

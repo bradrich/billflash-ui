@@ -1,0 +1,332 @@
+<mat-toolbar>
+
+  <h4 class="m-0">
+    <span *ngIf="formType === 'create'">Create Bill</span>
+    <span *ngIf="formType === 'update'">Update Bill</span>
+  </h4>
+
+  <button class="btn btn-icon ml-auto" (click)="matDialogRef.close()">
+    <mat-icon>close</mat-icon>
+  </button>
+
+</mat-toolbar>
+<mat-dialog-content>
+
+  <form class="d-flex flex-column" [formGroup]="form" role="Bill Form">
+
+    <div class="d-flex flex-row align-items-center mb-3">
+
+      <!-- Type -->
+      <mat-select id="type" formControlName="type" class="bf-icon-select">
+        <mat-select-trigger>
+          <mat-icon class="bf-icon-lg">{{form.get('type').value | billTypeIcon}}</mat-icon>
+        </mat-select-trigger>
+        <mat-optgroup *ngFor="let category of billCategories" [label]="category | titleCase">
+          <mat-option
+            *ngFor="let t of billCategoryTypes.get(category)"
+            [value]="t">
+            <mat-icon>{{t | billTypeIcon}}</mat-icon>
+            {{t | titleCase}}
+          </mat-option>
+        </mat-optgroup>
+      </mat-select>
+      <!-- End type -->
+
+      <!-- Name -->
+      <div class="col-10 pr-0">
+        <input
+          id="name"
+          type="text"
+          class="form-control"
+          formControlName="name"
+          placeholder="Bill name" />
+      </div>
+      <!-- End name -->
+
+    </div>
+
+    <div class="form-group row">
+
+      <div class="col">
+
+        <!-- Next due date -->
+        <div class="form-group d-flex flex-column">
+          <label for="nextDueDatePicker"><strong>Next due date</strong></label>
+          <ngb-datepicker
+            id="nextDueDatePicker"
+            outsideDays="collapsed"
+            [minDate]="todayDate"
+            [startDate]="calendarStartDate"
+            formControlName="nextDueDatePicker"
+            class="border-0 bf-flex-calendar">
+          </ngb-datepicker>
+        </div>
+        <!-- End next due date -->
+
+        <!-- Remind date -->
+        <div class="form-group">
+          <div class="form-check">
+            <input
+              id="remind"
+              type="checkbox"
+              class="form-check-input bf-remind-date-checkbox"
+              formControlName="remind" />
+            <label for="remind" class="form-check-label d-flex align-items-center">
+              Remind me
+              <input
+                id="remindDaysBefore"
+                type="text"
+                class="form-control bf-narrow-input mr-2 ml-2"
+                formControlName="remindDaysBefore" />
+              before
+            </label>
+          </div>
+        </div>
+        <!-- End remind date -->
+
+        <!-- Repeat interval -->
+        <div class="form-group">
+          <label for="repeatInterval"><strong>Repeat interval</strong></label>
+          <select id="repeatInterval" class="form-control" formControlName="repeatInterval">
+            <option *ngFor="let interval of billRepeatIntervals" [value]="interval">
+              {{billRepeatIntervalsMap.get(interval)}}
+            </option>
+          </select>
+        </div>
+        <div
+          class="form-group d-flex align-items-center"
+          *ngIf="form.get('repeatInterval').value === 'CUSTOM'">
+          Every
+          <input
+            id="customRepeatIntervalIncrement"
+            type="number"
+            class="form-control bf-narrow-input mr-2 ml-2"
+            formControlName="customRepeatIntervalIncrement" />
+          <select
+            id="customRepeatIntervalTimeName"
+            class="form-control"
+            formControlName="customRepeatIntervalTimeName">
+            <option
+              *ngFor="let name of billCustomRepeatIntervalTimeNames"
+              [value]="name">
+              {{name | titleCase}}
+            </option>
+          </select>
+        </div>
+        <!-- End repeat interval -->
+
+        <!-- Payment method -->
+        <div
+          class="form-group"
+          [ngClass]="{ 'mb-1': form.get('paymentMethod').value === 'ONLINE' }">
+          <label for="paymentMethod"><strong>Payment method</strong></label>
+          <select id="paymentMethod" class="form-control" formControlName="paymentMethod">
+            <option *ngFor="let method of billPaymentMethods" [value]="method">
+              {{method | titleCase}}
+            </option>
+          </select>
+        </div>
+        <div class="form-group" *ngIf="form.get('paymentMethod').value === 'ONLINE'">
+          <input
+            id="paymentUrl"
+            type="text"
+            class="form-control"
+            formControlName="paymentUrl"
+            placeholder="Payment URL" />
+        </div>
+        <!-- End payment method -->
+
+      </div>
+
+      <div class="col">
+
+        <!-- Amount due -->
+        <div class="form-group mb-1">
+          <label for="amountDue"><strong>Amount due</strong></label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <input
+              id="amountDue"
+              type="number"
+              class="form-control"
+              formControlName="amountDue"
+              placeholder="0" />
+          </div>
+          <bf-error-messages
+            [group]="form"
+            controlName="amountDue">
+          </bf-error-messages>
+        </div>
+        <!-- End amount due -->
+
+        <!-- Amount varies -->
+        <div class="form-group">
+          <div class="form-check">
+            <input
+              id="amountVaries"
+              type="checkbox"
+              class="form-check-input"
+              formControlName="amountVaries" />
+            <label for="amountVaries" class="form-check-label">
+              Amount varies
+            </label>
+          </div>
+        </div>
+        <!-- End amount varies -->
+
+        <!-- Current balance -->
+        <div class="form-group mb-1">
+          <label for="currentBalance"><strong>Current balance</strong></label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <input
+              id="currentBalance"
+              type="number"
+              class="form-control"
+              formControlName="currentBalance"
+              placeholder="0" />
+          </div>
+          <bf-error-messages
+            [group]="form"
+            controlName="currentBalance">
+          </bf-error-messages>
+        </div>
+        <!-- End current balance -->
+
+        <!-- Original balance -->
+        <div class="form-group mb-1">
+          <label for="origBalance">Initial balance</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <input
+              id="origBalance"
+              type="number"
+              class="form-control"
+              formControlName="origBalance"
+              placeholder="0" />
+          </div>
+          <bf-error-messages
+            [group]="form"
+            controlName="origBalance">
+          </bf-error-messages>
+        </div>
+        <!-- End original balance -->
+
+        <!-- Current loan number -->
+        <div class="form-group mb-1">
+          <label for="currentLoanPaymentNumber">Current loan number</label>
+          <input
+            id="currentLoanPaymentNumber"
+            type="number"
+            class="form-control"
+            formControlName="currentLoanPaymentNumber"
+            placeholder="0" />
+          <bf-error-messages
+            [group]="form"
+            controlName="currentLoanPaymentNumber">
+          </bf-error-messages>
+        </div>
+        <!-- End current loan number -->
+
+        <!-- Original loan term -->
+        <div class="form-group mb-1">
+          <label for="currentLoanNumber">Original loan term</label>
+          <div class="input-group">
+            <input
+              id="origLoanTerm"
+              type="number"
+              class="form-control"
+              formControlName="origLoanTerm"
+              placeholder="0" />
+            <div class="input-group-append" ngbDropdown placement="bottom-right">
+              <button class="btn input-group-text" ngbDropdownToggle>
+                {{form.get('origLoanTermUnit').value}}
+              </button>
+              <div ngbDropdownMenu>
+                <button
+                  class="dropdown-item"
+                  (click)="form.patchValue({ origLoanTermUnit: 'months' })">
+                  months
+                </button>
+                <button
+                  class="dropdown-item"
+                  (click)="form.patchValue({ origLoanTermUnit: 'years' })">
+                  years
+                </button>
+              </div>
+            </div>
+          </div>
+          <bf-error-messages
+            [group]="form"
+            controlName="origLoanTerm">
+          </bf-error-messages>
+        </div>
+        <!-- End original loan term -->
+
+        <!-- Interest rate -->
+        <div class="form-group mb-1">
+          <label for="interestRate">Interest rate</label>
+          <div class="input-group">
+            <input
+              id="interestRate"
+              type="number"
+              class="form-control"
+              formControlName="interestRate"
+              placeholder="0" />
+            <div class="input-group-append">
+              <span class="input-group-text">%</span>
+            </div>
+          </div>
+          <bf-error-messages
+            [group]="form"
+            controlName="interestRate">
+          </bf-error-messages>
+        </div>
+        <!-- End interest rate -->
+
+        <!-- Escrow amount -->
+        <div class="form-group mb-1">
+          <label for="escrowAmount">Escrow amount</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <input
+              id="escrowAmount"
+              type="number"
+              class="form-control"
+              formControlName="escrowAmount"
+              placeholder="0" />
+          </div>
+          <bf-error-messages
+            [group]="form"
+            controlName="escrowAmount">
+          </bf-error-messages>
+        </div>
+        <!-- End escrow amount -->
+
+      </div>
+
+    </div>
+
+  </form>
+
+</mat-dialog-content>
+<mat-dialog-actions class="d-flex flex-column flex-md-row align-items-md-center">
+
+  <bf-form-buttons
+    class="d-flex flex-column flex-md-row align-items-md-center mr-auto"
+    useIcons="true"
+    [group]="form"
+    [isSaving]="isSaving"
+    (save)="save()"
+    (cancel)="cancel()">
+  </bf-form-buttons>
+
+</mat-dialog-actions>

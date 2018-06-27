@@ -1,0 +1,24 @@
+<button
+  type="button"
+  class="btn btn-medium mr-2"
+  [ngbTooltip]="useIcons ? 'Cancel' : null"
+  placement="bottom"
+  container="body"
+  (click)="cancel.emit()"
+  [hidden]="group.pristine">
+  <mat-icon *ngIf="useIcons">close</mat-icon>
+  <span *ngIf="!useIcons">Cancel</span>
+</button>
+
+<button
+  type="submit"
+  class="btn btn-primary"
+  [ngbTooltip]="useIcons ? 'Save' : null"
+  placement="bottom"
+  container="body"
+  [disabled]="group.pristine || group.invalid || isSaving || isSaveDisabled"
+  (click)="save.emit()">
+  <mat-icon *ngIf="useIcons">check</mat-icon>
+  <span *ngIf="!useIcons && !isSaving">Save</span>
+  <sf-spinner type="wave" *ngIf="!useIcons && isSaving"></sf-spinner>
+</button>

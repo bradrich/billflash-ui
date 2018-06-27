@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="4px" height="5px" viewBox="0 0 4 5" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>select-handle</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="select-handle" fill-rule="nonzero" fill="#FAFAFC">
+            <path d="M2,0 L0,2 L4,2 L2,0 Z M2,5 L0,3 L4,3 L2,5 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

@@ -1,14 +1,79 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>BillflashUi</title>
-  <base href="/">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <bf-root></bf-root>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <title>Billflash</title>
+    <base href="/">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style type="text/css">
+      html, body {
+        background-color: #323552;
+      }
+    </style>
+    <link rel="stylesheet" href="loading.css" />
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+
+    <bf-root>
+      <div class="bf-loading-screen">
+        <div class="bf-loading-inner">
+          <div class="bf-loading-center-outer">
+            <div class="bf-loading-center-middle">
+              <h1 class="bf-loading-logo-header">
+                <img src="assets/images/project-flash-300px.png" width="300" height="138" />
+              </h1>
+              <div class="bf-loading-html">
+                <p class="bf-loading-message"></p>
+                <div class="sk-spinner">
+                  <div class="sk-bounce1"></div>
+                  <div class="sk-bounce2"></div>
+                  <div class="sk-bounce3"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </bf-root>
+
+    <script>
+      // Load shim for IE.
+      if (window.navigator.userAgent.indexOf('Trident/') > 0) {
+        var script = document.createElement('script');
+        script.src = 'core-js-shim.min.js';
+        script.type = 'text/javascript';
+        document.getElementsByTagName('head')[0].appendChild(script);
+      }
+    </script>
+
+    <noscript>
+      <h1>You must enable JavaScript to view this page.</h1>
+    </noscript>
+
+    <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
+      <script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-XXXXX-X');ga('send','pageview');
+      </script>
+    -->
+
+  </body>
+
 </html>

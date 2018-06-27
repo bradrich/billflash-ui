@@ -1,0 +1,19 @@
+/* =================================================================================================
+Bill due soon
+================================================================================================= */
+
+@import
+  'variables',
+  'mixins',
+  '@angular/material/theming',
+  'bootstrap/scss/functions',
+  'bootstrap/scss/variables',
+  'bootstrap/scss/mixins';
+
+.bf-regular {
+  @include bf-sidebar-content-regular();
+}
+
+.progress {
+  background-color: $gray-700;
+}

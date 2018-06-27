@@ -1,0 +1,36 @@
+<h6 class="ml-3">TAGS</h6>
+
+<div class="ml-3">
+
+  <ng-template #popoverContent>
+    <bf-tag-create [bill]="currentBill" (create)="create($event)"></bf-tag-create>
+  </ng-template>
+
+  <mat-chip-list class="d-flex flex-row align-items-center mr-2 bf-chip-list">
+
+    <mat-chip
+      *ngFor="let tag of currentBill?.tags"
+      removable="true"
+      (remove)="remove(tag)"
+      class="mt-2 mr-2 ml-0"
+      [ngClass]="tag.color">
+      {{tag.name}}
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+
+    <button
+      type="button"
+      class="btn btn-icon btn-mini-fab mt-2 shadow-0"
+      [ngClass]="{ 'active btn-danger': isCreating, 'btn-primary': !isCreating }"
+      (click)="isCreating = !isCreating"
+      #popover="ngbPopover"
+      [ngbPopover]="popoverContent"
+      placement="right"
+      popoverTitle="Create tag"
+      container="body">
+      <mat-icon>add</mat-icon>
+    </button>
+
+  </mat-chip-list>
+
+</div>

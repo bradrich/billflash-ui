@@ -1,0 +1,16 @@
+/* =================================================================================================
+Alert
+================================================================================================= */
+
+// Material Snackbar
+.mat-snack-bar-container {
+  height: auto !important;
+  background-color: $gray-850;
+  color: $white;
+
+  @include bf-border-theming();
+
+  .mat-simple-snackbar-message {
+    white-space: normal !important;
+  }
+}

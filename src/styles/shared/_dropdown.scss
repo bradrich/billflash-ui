@@ -1,0 +1,18 @@
+/* =================================================================================================
+Dropdown
+================================================================================================= */
+
+.dropup .dropdown-toggle:after {
+  display: none;
+}
+.dropdown-menu {
+  @include mat-elevation(2);
+}
+.dropdown-item {
+  .mat-icon {
+    transform: translateY(5px);
+  }
+  &:hover {
+    background-color: $gray-200;
+  }
+}

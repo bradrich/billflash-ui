@@ -1,0 +1,89 @@
+/* =================================================================================================
+Button
+================================================================================================= */
+
+a, button {
+  cursor: pointer;
+  transition: $swift-ease-out;
+  transition-property: all;
+  &:not(.btn-icon)[disabled], &:not(.btn-icon):disabled, &:not(.btn-icon).disabled {
+    border-color: $gray-175 !important;
+    background-color: $gray-175 !important;
+    color: $gray-500 !important;
+    cursor: $bf-cursor-disabled;
+  }
+
+  .mat-icon {
+    transform: translateY(2px);
+  }
+}
+
+.btn {
+  &:not(.btn-raised) {
+    box-shadow: none !important;
+  }
+
+  // Loading spinner inside button
+  .sk-wave {
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 24px;
+    .sk-rect {
+      background-color: $gray-100;
+    }
+  }
+}
+
+.btn-raised {
+  @include mat-elevation(2);
+}
+
+.btn-icon, .btn-mini-fab {
+  padding: 0;
+  min-width: 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  vertical-align: baseline;
+  line-height: 40px;
+  &:after {
+    display: none;
+  }
+
+  * {
+    line-height: 38px;
+  }
+  .mat-icon {
+    transform: none;
+  }
+}
+.btn-icon {
+  &:not(.btn-mini-fab) {
+    border-color: transparent !important;
+    background-color: transparent !important;
+  }
+  &.disabled, &[disabled] {
+    color: $medium-2;
+  }
+  @each $color, $value in $theme-colors {
+    &.btn-#{$color}:not(.disabled):not([disabled]):not(.btn-mini-fab) {
+      color: $value;
+    }
+  }
+  &.btn-white:not(.disabled):not([disabled]) {
+    color: $white;
+  }
+}
+.btn-mini-fab {
+  transition: $swift-ease-out;
+  transition-property: all;
+  transform: rotate(0deg);
+  &.active {
+    transform: rotate(45deg);
+  }
+  @each $color, $value in $theme-colors {
+    &.btn-#{$color} {
+      @include button-variant($value, $value);
+    }
+  }
+}

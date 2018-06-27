@@ -1,0 +1,73 @@
+/* =================================================================================================
+Form
+================================================================================================= */
+
+// Material Design select
+.mat-select.bf-icon-select {
+  display: flex;
+  .mat-select-value, mat-select-trigger {
+    display: flex;
+    align-items: center;
+  }
+  .mat-select-value {
+    min-width: 40px;
+  }
+}
+.mat-option:hover {
+  background-color: $gray-200;
+}
+.mat-option-text {
+  display: flex;
+  align-items: center;
+}
+.mat-select-panel {
+  background-color: $gray-100;
+
+  .mat-option.mat-selected:not(.mat-option-multiple) {
+    background-color: $gray-200;
+  }
+}
+.mat-optgroup .mat-option.mat-selected:not(.mat-option-multiple) {
+  padding-left: 24px;
+  border-left: solid 8px $primary;
+  border-bottom-left-radius: $border-radius;
+  border-top-left-radius: $border-radius;
+}
+
+// NGBootstrap datepicker
+.bf-flex-calendar {
+  .d-block {
+    display: flex !important;
+  }
+  .ngb-dp-month {
+    flex: 1;
+  }
+  ngb-datepicker-month-view {
+    flex: 1;
+    flex-direction: column;
+  }
+  .ngb-dp-weekday, .ngb-dp-day {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex: 1;
+  }
+}
+.custom-select {
+  background-position-x: 96%;
+}
+
+// Miscellaneous
+.input-group-text {
+  padding-top: 2px;
+  padding-bottom: 0;
+}
+.bf-remind-date-checkbox {
+  margin-top: 0.75rem;
+}
+.bf-narrow-input {
+  width: 50px;
+}
+.bf-small-text {
+  font-size: 80%;
+}

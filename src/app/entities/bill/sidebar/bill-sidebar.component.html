@@ -1,0 +1,53 @@
+<!-- Header image -->
+<header class="bf-sidebar-image">
+  <img [src]="assets?.headerImage" width="100" alt="BillFlash" />
+</header>
+<!-- End header image -->
+
+<!-- App name -->
+<div class="bf-sidebar-app-name">
+  <h6 class="m-0">{{appName}}</h6>
+</div>
+<!-- End app name -->
+
+<!-- Back button -->
+<div
+  class="d-flex flex-row align-items-center justify-content-center bf-sidebar-back-button"
+  routerLink="/bills"
+  *ngIf="isDetailPage">
+  <mat-icon>chevron_left</mat-icon>
+  <h6 class="m-0">Back to list</h6>
+</div>
+<!-- End back button -->
+
+<div class="bf-sidebar-content" *ngIf="!isDetailPage">
+
+  <!-- Calendar -->
+  <bf-bill-calendar class="d-flex mb-5 flex-column"></bf-bill-calendar>
+  <!-- End calendar -->
+
+  <!-- Stats -->
+  <div>
+    <h6 class="mb-0 ml-3">STATS</h6>
+    <bf-bill-due-soon></bf-bill-due-soon>
+    <bf-bill-due-this-month></bf-bill-due-this-month>
+  </div>
+  <!-- End stats -->
+
+</div>
+
+<div class="bf-sidebar-content" *ngIf="isDetailPage">
+
+  <!-- Snapshot -->
+  <bf-bill-snapshot></bf-bill-snapshot>
+  <!-- End snapshot -->
+
+  <!-- Notes -->
+  <bf-bill-notes></bf-bill-notes>
+  <!-- End notes -->
+
+  <!-- Tags -->
+  <bf-tag-list></bf-tag-list>
+  <!-- End tags -->
+
+</div>

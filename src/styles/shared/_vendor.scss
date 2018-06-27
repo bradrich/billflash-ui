@@ -1,0 +1,18 @@
+/* =================================================================================================
+Vendor
+================================================================================================= */
+
+@import
+  'animatewithsass/animate.scss',
+  'font-awesome/scss/font-awesome',
+  'spinkit/scss/spinkit.scss',
+  'please-wait/src/please-wait.scss',
+  '@angular/material/theming',
+  'bootstrap/scss/bootstrap.scss',
+  '@swimlane/ngx-datatable/src/themes/bootstrap.scss',
+  '@swimlane/ngx-datatable/src/themes/dark.scss',
+  '@swimlane/ngx-datatable/src/themes/material.scss',
+  '@swimlane/ngx-datatable/assets/icons.css';
+
+// Initialize the `@angular/material` library style.
+@include mat-core();

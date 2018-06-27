@@ -1,0 +1,61 @@
+/* =================================================================================================
+Bill sidebar
+================================================================================================= */
+
+@import
+  'variables',
+  'mixins',
+  '@angular/material/theming',
+  'bootstrap/scss/functions',
+  'bootstrap/scss/variables',
+  'bootstrap/scss/mixins';
+
+$bf-sidebar-width: 400px;
+$bf-sidebar-mobile-width: 100%;
+
+:host {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  min-width: $bf-sidebar-mobile-width;
+  max-width: $bf-sidebar-mobile-width;
+  width: $bf-sidebar-mobile-width;
+  height: 100%;
+  color: $light;
+  @media screen and (min-width: map-get($grid-breakpoints, 'sm')) {
+    min-width: $bf-sidebar-width;
+    max-width: $bf-sidebar-width;
+    width: $bf-sidebar-width;
+  }
+
+  .bf-sidebar-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    flex-direction: column;
+    width: 100%;
+    height: 120px;
+  }
+
+  .bf-sidebar-app-name, .bf-sidebar-back-button {
+    margin: 0 0 0 ($spacer * 2);
+    padding: ($spacer * 0.55) ($spacer * 2.6) ($spacer * 0.6) ($spacer * 0.5);
+    border-bottom-left-radius: 18px;
+    border-top-left-radius: 18px;
+    background-color: $gray-700;
+    text-align: center;
+  }
+  .bf-sidebar-back-button {
+    padding: ($spacer * 0.5) ($spacer * 3) ($spacer * 0.5) ($spacer * 0.1);
+    background-color: $primary;
+    cursor: pointer;
+  }
+
+  .bf-sidebar-content {
+    overflow-y: auto;
+    padding: 29px 0 29px ($spacer * 2);
+    border-bottom-left-radius: 18px;
+    border-top-left-radius: 18px;
+  }
+}

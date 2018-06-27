@@ -1,0 +1,46 @@
+/* =================================================================================================
+Bill calendar
+================================================================================================= */
+
+@import
+  'variables',
+  'mixins',
+  '@angular/material/theming',
+  'bootstrap/scss/functions',
+  'bootstrap/scss/variables',
+  'bootstrap/scss/mixins';
+
+.bf-selected {
+  @include bf-sidebar-content-selected();
+}
+
+.bf-bill-sidenav-calendar {
+  border-width: 0 !important;
+
+  .ngb-dp-header {
+    background-color: transparent !important;
+  }
+  select.custom-select {
+    border-width: 0 !important;
+    background-color: transparent !important;
+    background-image: url('../../../../assets/images/select-handle.svg');
+    color: $light !important;
+    cursor: pointer;
+  }
+  .ngb-dp-weekdays {
+    background-color: transparent !important;
+  }
+  .custom-day {
+    margin: 2px;
+    padding: 0.185rem 0.25rem 0.3rem;
+    width: 2rem;
+    border-radius: 0.25rem;
+    text-align: center;
+  }
+  .btn-light {
+    color: $light;
+    &.text-muted {
+      color: $gray-200 !important;
+    }
+  }
+}

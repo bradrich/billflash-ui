@@ -1,0 +1,154 @@
+<bf-bill-list-header
+  class="bf-header border-bottom border-secondary-light-2">
+</bf-bill-list-header>
+
+<div class="bf-content-container">
+
+  <div class="bf-content">
+
+    <!-- Loading -->
+    <bf-spinner
+      type="threeBounce"
+      *ngIf="isLoading && !isRefreshing && !isError">
+    </bf-spinner>
+    <!-- End loading -->
+
+    <!-- Data -->
+    <ngx-datatable
+      class="bootstrap"
+      [columnMode]="'force'"
+      [rows]="bills | async"
+      [rowHeight]="'auto'"
+      [scrollbarH]="true"
+      [selected]="selectedBills | async"
+      [selectionType]="'multiClick'"
+      (select)="selectBills($event)"
+      [sortType]="'single'"
+      [sorts]="sorts"
+      (sort)="sortBills($event)"
+      *ngIf="(!isLoading || isRefreshing) && (bills | async)?.length && !isError">
+
+      <ngx-datatable-column
+        cellClass="align-items-center"
+        [sortable]="false"
+        [width]="75"
+        [maxWidth]="75"
+        [frozenLeft]="true">
+        <ng-template let-bill="row" ngx-datatable-cell-template>
+          <mat-icon class="bf-icon-lg">{{bill.type | billTypeIcon}}</mat-icon>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Bill" prop="name" [width]="275" [frozenLeft]="true">
+        <ng-template let-bill="row" ngx-datatable-cell-template>
+          <span>
+            {{bill.name}}<br />
+            <small>{{bill.repeatInterval | billRepeatInterval}}</small>
+          </span>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column
+        name="Average"
+        prop="averagePaymentAmount"
+        headerClass="text-right"
+        cellClass="align-items-end">
+        <ng-template let-bill="row" ngx-datatable-cell-template>
+          {{bill.averagePaymentAmount | currency}}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column
+        name="Amount"
+        prop="amountDue"
+        headerClass="text-right"
+        cellClass="align-items-end">
+        <ng-template let-bill="row" ngx-datatable-cell-template>
+          {{bill.amountDue | currency}}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column
+        name="Balance"
+        prop="currentBalance"
+        headerClass="text-right"
+        cellClass="align-items-end">
+        <ng-template let-bill="row" ngx-datatable-cell-template>
+          {{bill.currentBalance | currency}}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Last Paid" sortable="false">
+        <ng-template let-bill="row" ngx-datatable-cell-template>
+          <span *ngIf="bill.payments">
+            {{bill.payments[0]?.date | date:'longDate'}}<br />
+            <small>{{bill.payments[0]?.amount | currency}}</small>
+          </span>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Next Due Date" prop="nextDueDate">
+        <ng-template let-bill="row" ngx-datatable-cell-template>
+          <span>
+            <span [ngClass]="getColorClasses(bill, 'text')">
+              {{bill.nextDueDate | amTimeAgo}}
+            </span><br />
+            <small>{{bill.nextDueDate | date:'fullDate'}}</small>
+          </span>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column cellClass="align-items-end bf-overflow-visible" sortable="false">
+        <ng-template let-bill="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+          <div ngbDropdown [placement]="getActionMenuPlacement(rowIndex, (bills | async)?.length)">
+            <button class="btn btn-icon" ngbDropdownToggle (click)="$event.stopPropagation()">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <div ngbDropdownMenu>
+              <button class="dropdown-item" (click)="editBill(bill); $event.stopPropagation()">
+                Edit
+              </button>
+              <button class="dropdown-item" (click)="archiveBill(bill); $event.stopPropagation()">
+                Archive
+              </button>
+              <button class="dropdown-item" (click)="deleteBill(bill); $event.stopPropagation()">
+                Delete
+              </button>
+            </div>
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column
+        sortable="false"
+        [width]="20"
+        [maxWidth]="20"
+        cellClass="bf-bill-color-cell">
+        <ng-template let-bill="row" ngx-datatable-cell-template>
+          <div class="bf-bill-color" [ngClass]="getColorClasses(bill, 'bg')"></div>
+        </ng-template>
+      </ngx-datatable-column>
+
+    </ngx-datatable>
+    <!-- End data -->
+
+    <!-- No results -->
+    <bf-no-results
+      class="bf-content bf-fade-in-up"
+      title="No bills to Display"
+      showCreateEntity="true"
+      (createEntity)="createBill()"
+      *ngIf="!isLoading && !(bills | async)?.length && !isError">
+    </bf-no-results>
+    <!-- End no results -->
+
+    <!-- Error -->
+    <sf-error
+      class="bf-content sf-fade-in-up"
+      *ngIf="!isLoading && isError">
+    </sf-error>
+    <!-- End error -->
+
+  </div>
+
+</div>

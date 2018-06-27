@@ -1,0 +1,20 @@
+<div class="d-flex flex-column bf-regular">
+
+  <div class="d-flex flex-row align-items-center">
+
+    <p class="m-0 text-medium-2">Due soon</p>
+
+    <p class="mt-0 mb-0 ml-auto">
+      <strong>{{dueSoonCount}}</strong>
+      <span class="text-medium-2">/ {{totalCount}}</span>
+    </p>
+
+    <p class="mt-0 mb-0 ml-3">
+      <span class="text-medium-2">$</span><strong>{{dueSoonAmount}}</strong>
+    </p>
+
+  </div>
+
+  <ngb-progressbar class="mt-2" type="primary" [value]="dueSoonPercentage"></ngb-progressbar>
+
+</div>

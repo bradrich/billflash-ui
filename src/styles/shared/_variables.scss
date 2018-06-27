@@ -1,0 +1,111 @@
+/* =================================================================================================
+Variables
+================================================================================================= */
+
+// Borders
+$bf-border-directions: top, right, bottom, left !default;
+$bf-border-radius-directions: top, top-right, right, bottom-right, bottom, bottom-left, left, top-left !default;
+
+// Colors - Grays
+$white: #ffffff;
+$gray-100: #fafafc;
+$gray-125: #f0f0f0;
+$gray-150: #efefef;
+$gray-175: #e4e4e8;
+$gray-200: #e0e0e0;
+$gray-250: #ced4da;
+$gray-300: #bdbecb;
+$gray-350: #a5a6bd;
+$gray-400: #7e7d8f;
+$gray-500: #6a6d8d;
+$gray-600: #4a4e72;
+$gray-700: #3e4469;
+$gray-750: #323552;
+$gray-800: #2a3c44;
+$gray-850: #20323a;
+$gray-900: #111435;
+$gray-950: #0e0e0e;
+$black: #000000;
+$grays: (
+  '100': $gray-100,
+  '125': $gray-125,
+  '150': $gray-150,
+  '175': $gray-175,
+  '200': $gray-200,
+  '250': $gray-250,
+  '300': $gray-300,
+  '350': $gray-350,
+  '400': $gray-400,
+  '500': $gray-500,
+  '600': $gray-600,
+  '700': $gray-700,
+  '750': $gray-750,
+  '800': $gray-800,
+  '850': $gray-850,
+  '900': $gray-900,
+  '950': $gray-950
+);
+
+// Colors - Miscellaneous
+$green: #28a745;
+$red: #dc3545;
+
+// Colors - Theme
+$primary: #f74b5f;
+$secondary: $gray-400;
+$success: $green;
+$info: #71ccd4;
+$warning: #fed130;
+$danger: $red;
+$light: $gray-100;
+$medium: $gray-200;
+$medium-2: $gray-300;
+$medium-3: $gray-600;
+$dark: $gray-750;
+$theme-colors: (
+  'primary': $primary,
+  'secondary': $secondary,
+  'success': $success,
+  'info': $info,
+  'warning': $warning,
+  'danger': $danger,
+  'light': $light,
+  'medium': $medium,
+  'medium-2': $medium-2,
+  'medium-3': $medium-3,
+  'dark': $dark
+);
+
+// Colors - Body
+$body-bg: $dark;
+$body-color: $dark;
+
+// Card
+$card-border-width: 0 !default;
+$card-bg: $gray-100 !default;
+
+// Cursors
+$bf-cursor-default: default !default;
+$bf-cursor-pointer: pointer !default;
+$bf-cursor-move: move !default;
+$bf-cursor-grab: grab !default;
+$bf-cursor-not-allowed: not-allowed !default;
+$bf-cursor-disabled: $bf-cursor-not-allowed !default;
+
+// Elevation
+$bf-elevations: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24 !default;
+
+// Form
+$input-border-color: $gray-300 !default;
+$input-disabled-bg: $gray-150 !default;
+
+// Layout
+$bf-content-padding: 40px 25px 54px !default;
+
+// Pagination
+$pagination-padding-y-sm: calc(0.25rem + 1px) !default;
+$pagination-padding-x-sm: calc(0.5rem + 1px) !default;
+$pagination-focus-box-shadow: none !default;
+
+// Spinkit
+$spinkit-spinner-color: $gray-500;

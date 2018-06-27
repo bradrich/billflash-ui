@@ -1,0 +1,20 @@
+/* =================================================================================================
+Edit panel
+================================================================================================= */
+
+$bf-edit-position-right: 30px;
+$bf-edit-position-padding-bottom: 28px;
+
+[bfEditPanel] {
+  position: fixed;
+  right: $bf-edit-position-right;
+  overflow: hidden;
+  padding-bottom: $bf-edit-position-padding-bottom;
+  &.bf-scrollable {
+    overflow-y: auto;
+  }
+
+  .bf-content-card {
+    margin: 0 12px;
+  }
+}

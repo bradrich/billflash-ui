@@ -1,0 +1,28 @@
+/* =================================================================================================
+Error
+================================================================================================= */
+
+bf-error, bf-no-results, bf-page-not-found {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  flex-direction: column;
+}
+
+.bf-error-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 48px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background-color: $gray-150;
+  text-align: center;
+
+  .btn {
+    max-width: 130px;
+  }
+}

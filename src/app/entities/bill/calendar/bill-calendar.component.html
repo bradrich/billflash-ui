@@ -1,0 +1,29 @@
+<h6 class="mb-3 ml-3">CALENDAR</h6>
+
+<div class="d-flex flex-column bf-selected">
+
+  <ngb-datepicker
+    class="bf-flex-calendar bf-bill-sidenav-calendar"
+    outsideDays="collapsed"
+    [dayTemplate]="billDay"
+    (select)="selectBillFromDate($event)">
+  </ngb-datepicker>
+
+  <ng-template
+    #billDay
+    let-date="date"
+    let-currentMonth="currentMonth"
+    let-disabled="disabled"
+    let-focused="focused">
+    <span
+      class="custom-day"
+      [class.focused]="focused"
+      [class.text-muted]="disabled"
+      [ngClass]="setDateColor(date)"
+      (mouseenter)="hoveredDate = date"
+      (mouseleave)="hoveredDate = null">
+      {{date.day}}
+    </span>
+  </ng-template>
+
+</div>

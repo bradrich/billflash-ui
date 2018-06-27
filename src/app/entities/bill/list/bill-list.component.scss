@@ -1,0 +1,23 @@
+/* =================================================================================================
+Bill list
+================================================================================================= */
+
+@import
+  'variables',
+  'mixins',
+  '@angular/material/theming',
+  'bootstrap/scss/functions',
+  'bootstrap/scss/variables',
+  'bootstrap/scss/mixins';
+
+:host {
+  @include bf-host;
+}
+
+.bf-content-container {
+  @include bf-content-container;
+
+  .bf-content {
+    @include bf-content;
+  }
+}

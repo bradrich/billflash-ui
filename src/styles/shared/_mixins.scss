@@ -1,0 +1,48 @@
+/* =================================================================================================
+Mixins
+================================================================================================= */
+
+// Content
+@mixin bf-host() {
+  position: relative;
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+@mixin bf-content-container() {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+@mixin bf-content() {
+  position: relative;
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+// Sidebar
+@mixin bf-sidebar-content-regular() {
+  padding: ($spacer * 0.5) ($spacer * 2.5) ($spacer * 0.5) $spacer;
+}
+@mixin bf-sidebar-content-selected() {
+  padding: ($spacer * 0.5) ($spacer * 2.5) ($spacer * 0.5) $spacer;
+  border-bottom-left-radius: 18px;
+  border-top-left-radius: 18px;
+  background-color: $gray-700;
+}
+@mixin bf-sidebar-content-detail() {
+  padding: $spacer ($spacer * 2.5) $spacer $spacer;
+  border-bottom-left-radius: 18px;
+  border-top-left-radius: 18px;
+  background-color: $gray-700;
+}

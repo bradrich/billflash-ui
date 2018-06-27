@@ -1,0 +1,25 @@
+/* =================================================================================================
+Chip
+================================================================================================= */
+
+.mat-chip-list.bf-no-focus {
+  .mat-chip:not(.mat-basic-chip):focus {
+    box-shadow: none;
+  }
+}
+
+.mat-chip {
+  background-color: $gray-175;
+  color: $gray-600;
+
+  @each $color, $value in $theme-colors {
+    &.mat-#{$color}.mat-chip-selected {
+      background-color: $value;
+      color: $white;
+    }
+  }
+
+  &:not(.mat-basic-chip).bf-cursor-pointer {
+    cursor: pointer;
+  }
+}

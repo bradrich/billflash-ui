@@ -1,0 +1,58 @@
+<div class="input-group">
+
+  <div class="input-group-prepend" ngbDropdown>
+    <button class="btn btn-medium border border-medium-2" ngbDropdownToggle>
+      Filters
+    </button>
+    <div ngbDropdownMenu>
+      <button class="dropdown-item" (click)="addFilter(null, 'Active')">
+        Active
+      </button>
+      <button class="dropdown-item" (click)="addFilter(null, 'Archived')">
+        Archived
+      </button>
+      <div class="dropdown-divider"></div>
+      <button class="dropdown-item" (click)="addFilter(null, 'Due soon')">
+        Due soon
+      </button>
+      <button class="dropdown-item" (click)="addFilter(null, 'Due this month')">
+        Due this month
+      </button>
+      <div class="dropdown-divider"></div>
+      <button class="dropdown-item">
+        tag1
+      </button>
+    </div>
+  </div>
+
+  <div class="form-control bf-search">
+
+    <mat-chip-list #searchChipList (change)="filterChange($event)">
+      <mat-chip
+        *ngFor="let filter of filtersToDisplay"
+        class="bf-search-filter-chip"
+        selectable="true"
+        removeable="true"
+        (removed)="removeFilter(filter)">
+        {{filter}}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
+
+    <input
+      type="text"
+      [ngClass]="{ 'bf-has-chips': filtersToDisplay?.length }"
+      [matChipInputFor]="searchChipList"
+      [matChipInputSeparatorKeyCodes]="filterSeparatorKeyCodes"
+      [matChipInputAddOnBlur]="true"
+      (matChipInputTokenEnd)="addFilter($event, null)" />
+
+  </div>
+
+  <div class="input-group-append">
+    <div class="input-group-text">
+      <mat-icon>search</mat-icon>
+    </div>
+  </div>
+
+</div>

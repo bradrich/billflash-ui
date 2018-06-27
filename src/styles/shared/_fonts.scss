@@ -1,0 +1,46 @@
+/* =================================================================================================
+Fonts
+================================================================================================= */
+
+$fa-font-path: '~/font-awesome/fonts';
+$datatable-font-path: '~/@swimlane/ngx-datatable/assets/fonts';
+$bf-font-path: '../assets/fonts';
+
+.material-icons {
+  display: inline-block;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  letter-spacing: normal;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  font-family: 'Material Icons';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1;
+  direction: ltr;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'liga';
+}
+
+@font-face {
+  font-weight: 400;
+  font-style: normal;
+  font-family: 'Material Icons';
+  src: url('#{$bf-font-path}/MaterialIcons-Regular.eot');
+  src: url('#{$bf-font-path}/MaterialIcons-Regular.woff2') format('woff2'),
+    url('#{$bf-font-path}/MaterialIcons-Regular.woff') format('woff'),
+    url('#{$bf-font-path}/MaterialIcons-Regular.ttf') format('truetype'),
+    url('#{$bf-font-path}/MaterialIcons-Regular.svg') format('svg');
+}
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: 'data-table';
+  src: url('#{$datatable-font-path}/data-table.eot');
+  src: url('#{$datatable-font-path}/data-table.eot?#iefix') format('embedded-opentype'),
+    url('#{$datatable-font-path}/data-table.woff') format('woff'),
+    url('#{$datatable-font-path}/data-table.ttf') format('truetype'),
+    url('#{$datatable-font-path}/data-table.svg#data-table') format('svg');
+}

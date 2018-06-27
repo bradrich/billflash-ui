@@ -1,0 +1,15 @@
+/* =================================================================================================
+Bill snapshot
+================================================================================================= */
+
+@import
+  'variables',
+  'mixins',
+  '@angular/material/theming',
+  'bootstrap/scss/functions',
+  'bootstrap/scss/variables',
+  'bootstrap/scss/mixins';
+
+.bf-detail {
+  @include bf-sidebar-content-detail();
+}

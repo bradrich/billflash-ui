@@ -1,0 +1,36 @@
+/* =================================================================================================
+Bill search
+================================================================================================= */
+
+@import
+  'variables',
+  'mixins',
+  '@angular/material/theming',
+  'bootstrap/scss/functions',
+  'bootstrap/scss/variables',
+  'bootstrap/scss/mixins';
+
+:host {
+  margin-top: 2px;
+  margin-left: auto;
+
+  .form-control.bf-search {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    .bf-search-filter-chip {
+      padding: 3px 12px;
+      background-color: $gray-200;
+    }
+    input {
+      display: flex;
+      flex: 1;
+      margin: 0;
+      padding: 0;
+      border-width: 0;
+      &.bf-has-chips {
+        padding-left: 12px;
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+/* =================================================================================================
+Main
+================================================================================================= */
+
+*, *:before, *:after {
+  outline: none !important;
+}
+
+html, body {
+  min-width: 320px;
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: $dark;
+  background: -moz-linear-gradient(top, $dark 30%, theme-color-level(dark, 2) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(30%, $dark), color-stop(100%, theme-color-level(dark, 2)));
+  background: -webkit-linear-gradient(top, $dark 30%, theme-color-level(dark, 2) 100%);
+  background: -o-linear-gradient(top, $dark 30%, theme-color-level(dark, 2) 100%);
+  background: -ms-linear-gradient(top, $dark 30%, theme-color-level(dark, 2) 100%);
+  background: linear-gradient(to bottom, $dark 30%, theme-color-level(dark, 2) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#323552', endColorstr='#2a2c44', GradientType=0);
+}
+
+bf-root {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}

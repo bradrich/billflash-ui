@@ -1,0 +1,54 @@
+/* =================================================================================================
+Utilities
+================================================================================================= */
+
+// Borders
+@mixin bf-border-radius() {
+  @each $direction in $bf-border-radius-directions {
+    .bf-border-#{$direction}-radius {
+      border-#{$direction}-radius: $border-radius !important;
+    }
+  }
+}
+
+@include bf-border-radius();
+
+// Cursors
+.bf-cursor-pointer {
+  cursor: $bf-cursor-pointer;
+}
+.bf-cursor-grab {
+  cursor: $bf-cursor-move;
+  cursor: $bf-cursor-grab;
+  &:active {
+    cursor: grabbing;
+  }
+}
+.bf-cursor-default {
+  cursor: $bf-cursor-default !important;
+  &.mat-button mat-icon {
+    cursor: $bf-cursor-default !important;
+  }
+}
+.bf-cursor-not-allowed {
+  cursor: $bf-cursor-not-allowed !important;
+}
+
+// Elevation
+@mixin bf-elevation() {
+  @each $elevation in $bf-elevations {
+    .bf-elevation-#{$elevation} {
+      @include mat-elevation($elevation);
+    }
+  }
+}
+
+@include bf-elevation();
+
+// Overflow
+.bf-overflow-hidden {
+  overflow: hidden !important;
+}
+.bf-overflow-visible {
+  overflow: visible !important;
+}

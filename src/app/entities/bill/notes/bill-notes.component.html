@@ -1,0 +1,51 @@
+<div class="mb-4 bf-selected">
+
+  <div class="d-flex flex-row align-items-center">
+    <p class="mt-2 mb-2 ml-1">NOTES</p>
+    <button
+      class="btn btn-icon ml-auto text-medium-2"
+      (click)="isEdit = !isEdit"
+      *ngIf="!isEdit">
+    </button>
+  </div>
+
+  <div class="mb-2 ml-1" *ngIf="!isEdit">{{currentBill?.notes}}</div>
+
+  <div class="mb-2" *ngIf="isEdit">
+    <form [formGroup]="form" role="Bill Notes Form">
+
+      <div class="form-group bg-dark">
+        <textarea
+          id="notes"
+          class="form-control bg-dark border-dark text-light bf-small-text bf-no-box-shadow"
+          formControlName="notes">
+        </textarea>
+      </div>
+
+      <div class="d-flex flex-row align-items-center">
+
+        <!-- Cancel -->
+        <button
+          type="button"
+          class="btn bg-dark text-light"
+          (click)="cancel()">
+          Cancel
+        </button>
+        <!-- End cancel -->
+
+        <!-- Save -->
+        <button
+          type="button"
+          class="btn btn-primary ml-2"
+          (click)="save()"
+          [disabled]="isSaving">
+          Save
+        </button>
+        <!-- End save -->
+
+      </div>
+
+    </form>
+  </div>
+
+</div>

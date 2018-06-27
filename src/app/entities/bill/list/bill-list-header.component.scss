@@ -1,0 +1,22 @@
+/* =================================================================================================
+Bill list header
+================================================================================================= */
+
+@import
+  'variables',
+  'mixins',
+  '@angular/material/theming',
+  'bootstrap/scss/functions',
+  'bootstrap/scss/variables',
+  'bootstrap/scss/mixins';
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  padding: 0 ($spacer * 2.5);
+  min-height: 120px;
+  width: 100%;
+  height: 120px;
+}
